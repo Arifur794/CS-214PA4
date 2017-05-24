@@ -1,0 +1,204 @@
+Arifur Rahman- PA4 Test Plan
+
+
+
+[] indicates file name
+{} indicates directory
+
+File Name: boo
+	Contains: A dog name name Boo
+File Name: baa
+	Contains: A cat name Baa
+File Name: bii
+	Contains: A a mouse named Bii
+File Name: boo (in a different directory than the first boo)
+	Contains: A dog name boo boo
+Directory Name: x
+	Contains: [boo]
+Directory Name: y
+	Contains: [baa]
+Directory Name: z
+	Contains: [boo] -the second boo
+Directory Name: Case2
+	Contains: [boo] [baa]
+Directory Name: Case3
+	Contains: {x} {y} [bii]
+Directory Name: Case4
+	Contains: {x} {y}
+Directory Name: Case5
+	Contains: {z} [boo]-the first boo
+
+Test Case 1:
+---------------------
+Description:
+Given a file name.
+
+index <index><boo>
+
+<list> a
+ boo 1
+</list>
+<list> boo
+ boo 1
+</list>
+<list> dog
+ boo 1
+</list>
+<list> name
+ boo 2
+</list>
+---------------------
+
+
+
+Test Case 2:
+---------------------
+Description:
+Given a directory name containing only files.
+
+index <index><Case2>
+
+<list> a
+ Case2/baa 1 Case2/boo 1
+</list>
+<list> baa
+ Case2/baa 1
+</list>
+<list> boo
+ Case2/boo 1
+</list>
+<list> cat
+ Case2/baa 1
+</list>
+<list> dog
+ Case2/boo 1
+</list>
+<list> name
+ Case2/boo 2 Case2/baa 1
+</list>
+---------------------
+
+
+
+Test Case 3:
+---------------------
+Description:
+Given a directory name containing multiple directories.
+
+index <index><Case3>
+
+<list> a
+ Case3/bii 2 Case3/x/boo 1 Case3/y/baa 1
+</list>
+<list> baa
+ Case3/y/baa 1
+</list>
+<list> bii
+ Case3/bii 1
+</list>
+<list> boo
+ Case3/x/boo 1
+</list>
+<list> cat
+ Case3/y/baa 1
+</list>
+<list> dog
+ Case3/x/boo 1
+</list>
+<list> mouse
+ Case3/bii 1
+</list>
+<list> name
+ Case3/x/boo 2 Case3/y/baa 1
+</list>
+<list> named
+ Case3/bii 1
+</list>
+---------------------
+
+
+
+Test Case 4:
+---------------------
+Description:
+Inverted-index file name already exists (Overwrite Option).
+
+index <y><Case4>
+
+Overwrite:
+<list> a
+ Case4/x/boo 1 Case4/y/baa 1
+</list>
+<list> baa
+ Case4/y/baa 1
+</list>
+<list> boo
+ Case4/x/boo 1
+</list>
+<list> cat
+ Case4/y/baa 1
+</list>
+<list> dog
+ Case4/x/boo 1
+</list>
+<list> name
+ Case4/x/boo 2 Case4/y/baa 1
+</list>
+
+Directory Name: Case4
+	Contains: {x} [y]
+
+
+Does not overwrite:
+-inverted index will not exist
+Directory Name: Case4
+	Contains: {x} {y}
+---------------------
+
+
+
+Test Case 5:
+---------------------
+Description:
+Files that have the same name(but different pathnames).
+
+index <index><Case5>
+
+<list> a
+ Case5/boo 1 Case5/z/boo 1
+</list>
+<list> boo
+ Case5/z/boo 2 Case5/boo 1
+</list>
+<list> dog
+ Case5/boo 1 Case5/z/boo 1
+</list>
+<list> name
+ Case5/boo 2 Case5/z/boo 1
+</list>
+---------------------
+
+
+
+Test Case 6:
+---------------------
+Description:
+Name of directory/file does not exist (ERROR).
+
+index <index><Case>
+
+File Does Not Exist.
+---------------------
+
+
+
+Test Case 7:
+---------------------
+Description:
+Scalability
+
+I tested it on a really large data file.
+
+Result: 
+It worked properly.
+---------------------
